@@ -1,15 +1,24 @@
 import React from "react";
 import AddFishForm from "./AddFishForm";
 import EditFishForm from "./EditFishForm";
+import PropTypes from "prop-types";
 
 class Inventory extends React.Component {
+  static propTypes = {
+       addFish: PropTypes.func,
+       deleteFish: PropTypes.func,
+       fishes: PropTypes.array,
+       loadSampleFishes: PropTypes.func,
+       updateFish: PropTypes.func
+  }
+
   render() {
     return (
       <div className="inventory">
         <h2>Inventory</h2>
         {Object.keys(this.props.fishes).map(key => (
           <EditFishForm
-            key={key}
+            key={key}    
             index={key}
             fish={this.props.fishes[key]}
             updateFish={this.props.updateFish}
